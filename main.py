@@ -12,7 +12,7 @@ def añadirVideo():
     o.run()
     url_video=delete.functionDeleteText(o.label.text)
     url_correcta=delete.functionValidationUrl(url_video)
-    addD.functionAddArchiveDirectory(url_correcta,"C:/Users/micro/PycharmProjects/PyVideo/VideoStore")
+    addD.functionAddArchiveDirectory(url_correcta,"../VideoStore")
 def verVideo():
     video.capturaVideo('VideoStore/LockBoxAndroid.mp4')
 def borrarVideo():
@@ -23,6 +23,6 @@ if __name__ == '__main__':
     addD=AddArchiveDirectory()
     video=VideoReproduce()
     deleteVideo=DeleteArchiveDirectory()
-    #añadirVideo()
+    añadirVideo()
     #verVideo()
 

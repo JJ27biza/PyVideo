@@ -3,11 +3,14 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.label import Label
+from kivy.core.window import Window
+
 
 
 class OpenDirectory(App):
 
     def build(self):
+        Window.clearcolor = (0.2, 0.3, 0.4, 1)
         self.title = 'PyVideo'
         self.box = BoxLayout(orientation='vertical')
         self.filechooser = FileChooserIconView()
