@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ActionVideo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CreateVideoStore">
+      <change afterPath="$PROJECT_DIR$/Bluetooth/BluetoothClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bluetooth/BluetoothServer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bluetooth/actionBluetooth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Directory/AddCreateVideoStore.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/pause.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PyVideo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyVideo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory/OpenDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Directory/OpenDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoStore/LockBoxAndroid.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionVideo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "C:/Users/micro/PycharmProjects/PyVideo/Grafic",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -203,5 +206,9 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.drawio" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="CreateVideoStore" />
+    <option name="LAST_COMMIT_MESSAGE" value="CreateVideoStore" />
   </component>
 </project>
