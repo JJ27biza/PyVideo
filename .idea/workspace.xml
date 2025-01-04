@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CreateVideoStore">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActionVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionVideo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory/OpenDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/Directory/OpenDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +60,7 @@
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Menu">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -75,7 +70,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (PyVideo)" />
+      <option name="SDK_NAME" value="Python 3.12 (PyVideo) (2)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Grafic" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -111,10 +106,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.Menu" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Menu" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Menu" />
       </list>
     </recent_temporary>
   </component>

@@ -7,6 +7,7 @@ import Directory.AddArchiveDirectory as addDirectory
 import VideoReproduce as video
 from VideoReproduce import VideoReproduce
 import Directory.DeleteArchiveDirectory as deleteVideo
+import pyvolume
 
 def añadirVideo():
     o.run()
@@ -24,6 +25,9 @@ if __name__ == '__main__':
     video=VideoReproduce()
     deleteVideo=DeleteArchiveDirectory()
     añadirVideo()
+
+
+    pyvolume.custom(percent=30)
     #verVideo()
 
 
