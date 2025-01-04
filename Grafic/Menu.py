@@ -77,7 +77,8 @@ class Menu(App):
         #self.pbVolumen.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
         #self.boxBack.add_widget(self.pbVolumen)
         #SeekBar Volumen
-        self.slider = Slider(min=-100, max=100, value=25)
+        self.slider = Slider(min=0, max=100, value=25)
+        self.slider.bind(value=self.return_sound)
         self.boxBack.add_widget(self.slider)
         # Añadir los BoxLayouts al layout principal
         self.layout.add_widget(self.boxNav)
@@ -146,6 +147,11 @@ class Menu(App):
             deleteVideo.functionDeleteArchive(video_path)
         except Exception as error:
             print('Error al borrar',error)
+    def return_sound(self,instance,value):
+        try:
+            print('Sonido al ',value,'%')
+        except Exception as error:
+            print('Error al mover el sonido',error)
 if __name__ == "__main__":
     op = OpenDirectory()
     delete=ModificText()

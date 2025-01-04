@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CreateVideoStore">
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CommitSonido">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +61,7 @@
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.Menu">
     <configuration name="Menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -107,13 +108,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.Menu" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.Menu" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -133,6 +134,15 @@
       <option name="presentableId" value="Default" />
       <updated>1735494422204</updated>
     </task>
+    <task id="LOCAL-00001" summary="CommitSonido">
+      <option name="closed" value="true" />
+      <created>1736020104939</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736020104939</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -151,6 +161,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CreateVideoStore" />
-    <option name="LAST_COMMIT_MESSAGE" value="CreateVideoStore" />
+    <MESSAGE value="CommitSonido" />
+    <option name="LAST_COMMIT_MESSAGE" value="CommitSonido" />
   </component>
 </project>
