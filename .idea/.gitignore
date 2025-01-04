@@ -1,4 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-VideoStore
+#ingnorar contenido VideoStore
+#No ignorar carpeta VideoStore
+/VideoStore/*
+!/VideoStore/
+
