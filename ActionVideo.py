@@ -7,8 +7,4 @@ class ActionVideo():
             contenido = os.listdir(video_directory)
             return contenido
         except Exception as error:
-<<<<<<< HEAD
             print('Error al hacer la lista de videos',error)
-=======
-            print('Error al hacer la lista de videos',error)
->>>>>>> master
