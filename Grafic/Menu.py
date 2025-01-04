@@ -13,7 +13,7 @@ import Directory.DeleteArchiveDirectory as deleteVideo
 from ModificText import ModificText
 from Directory.AddArchiveDirectory import AddArchiveDirectory
 from ActionVideo import ActionVideo
-
+from Directory.AddCreateVideoStore import AddCreateVideoStore
 
 
 class Menu(App):
@@ -79,9 +79,6 @@ class Menu(App):
         #SeekBar Volumen
         self.slider = Slider(min=-100, max=100, value=25)
         self.boxBack.add_widget(self.slider)
-
-
-
         # Añadir los BoxLayouts al layout principal
         self.layout.add_widget(self.boxNav)
         self.layout.add_widget(self.box)
@@ -98,7 +95,6 @@ class Menu(App):
                  self.video.state = 'play'
                  print(f"Reproduciendo: {listVideo[numero]}",'Numero: ',numero)
                  print('Atras', numero)
-
             else:
                 print('No existen más videos')
         except Exception as error:
@@ -159,5 +155,8 @@ if __name__ == "__main__":
     addD=AddArchiveDirectory()
     deleteVideo=DeleteArchiveDirectory()
     actionVideo=ActionVideo()
+    actionVideoStore=AddCreateVideoStore()
     listVideo=actionVideo.listVideo()
+    print(listVideo)
+    actionVideoStore.functionCreateVideoStore()
     Menu().run()
