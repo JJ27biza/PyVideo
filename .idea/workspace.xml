@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="SliderSonido">
-      <change afterPath="$PROJECT_DIR$/ControlSound/ActionSound.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Picture/alto_volumen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Image/pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/Image/pause.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

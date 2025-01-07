@@ -54,6 +54,9 @@ class Menu(App):
         self.buttonAtras.bind(on_press=self.on_button_atras)
 
         self.box.add_widget(self.buttonAtras)
+
+
+
         # Video
 
         self.video = Video(source= '../Image/pause.png',state="pause",size_hint=(1, 1),pos_hint={'center_x': 0.5, 'center_y': 0.5})
@@ -63,12 +66,22 @@ class Menu(App):
         self.buttonDelante.pos_hint={'center_x': 0.5, 'center_y': 0.5}
         self.buttonDelante.bind(on_press=self.on_button_adelante)
         self.box.add_widget(self.buttonDelante)
+
         # Button Maximice
-        self.buttonMax = Button(text="Maximize", size_hint=(0.5, 1))
-        # self.buttonMax.bind(on_press=self.on_button_press)
+        self.buttonMax = Button(text="Maximize")
+        self.buttonMax.bind(on_press=self.on_button_maximize)
         self.buttonMax.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
         self.boxBack.add_widget(self.buttonMax)
-
+        #Boton de suma de tiempo
+        self.sumarVideo=Button(text="Más 30s", size_hint=(0.5, 1))
+        self.sumarVideo.pos_hint={'center_x': 0.5, 'center_y': 0.5}
+        self.sumarVideo.bind(on_press=self.on_click_sum)
+        self.boxBack.add_widget(self.sumarVideo)
+        #Botón para reducir tiempo
+        self.restarVideo = Button(text="Menos 30s", size_hint=(0.5, 1))
+        self.restarVideo.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
+        # self.restarVideo.bind(on_press=self.on_button_atras)
+        self.boxBack.add_widget(self.restarVideo)
         # Botón Play (en BoxBack)
         self.buttonPlay = Button(text="Play", size_hint=(0.5, 1))
         self.buttonPlay.bind(on_press=self.on_button_press)
@@ -85,7 +98,7 @@ class Menu(App):
         self.vimg.padding = (0, 0)  # Aseguramos que la imagen no tenga relleno
         self.boxBack.add_widget(self.vimg)
         #SeekBar Volumen
-        self.slider = Slider(min=0, max=100,step=1)
+        self.slider = Slider(min=0, max=100,value=15,step=1)
         self.slider.bind(on_touch_up=self.return_sound)
         self.boxBack.add_widget(self.slider)
         # Añadir los BoxLayouts al layout principal
@@ -159,14 +172,56 @@ class Menu(App):
             print('Error al borrar',error)
 
     def return_sound(self,instance,touch):
-
         try:
             if instance.collide_point(*touch.pos):
-                value = instance.value
-            actionSound.functionControlSound(value)
-            print(value)
+             actionSound.functionControlSound(instance.value)
         except Exception as error:
             print('Error al mover el sonido',error)
+    def on_button_maximize(self,instance):
+        try:
+            self.layout.size_hint = (1, 1)
+            self.layout.padding = (0, 0)
+            self.layout.spacing = 0
+            self.layout.remove_widget(self.boxNav)
+            self.layout.remove_widget(self.boxBack)
+            self.box.remove_widget(self.buttonAtras)
+            self.box.remove_widget(self.buttonDelante)
+            self.box.size_hint=(1, 1)
+            self.video.size_hint = (1, 1)
+            self.video.bind(on_touch_down=self.on_video_click)
+
+        except Exception as error:
+            print('Error al maximizar el video',error)
+    def on_video_click(self,instance,touch):
+        try:
+            self.box.remove_widget(self.video)
+            self.layout.remove_widget(self.box)
+            self.boxNav.size_hint=(1, 0.1)
+            self.layout.add_widget(self.boxNav)
+            self.box.add_widget(self.buttonAtras)
+            self.box.add_widget(self.video)
+            self.box.add_widget(self.buttonDelante)
+            self.box.size_hint = (1, 0.8)
+            self.layout.add_widget(self.box)
+            self.layout.add_widget(self.boxBack)
+            self.video.unbind(on_touch_down=self.on_video_click)
+        except Exception as error:
+            print('Error al hacer click en el video',error)
+    def on_click_sum(self,instance):
+        try:
+            if self.video.state == 'play':
+                # Calcular nueva posición
+                new_position = self.video.position + 30
+
+                # Si la nueva posición no excede la duración del video
+                if new_position < self.video.duration:
+                    self.video.position = new_position
+                else:
+                    # Si el video ya ha alcanzado el final, ponlo al final
+                    self.video.position = self.video.duration
+
+        except Exception as error:
+            print('Error al sumar el video',error)
 if __name__ == "__main__":
     op = OpenDirectory()
     delete=ModificText()
