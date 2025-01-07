@@ -1,7 +1,10 @@
+import os.path
+
 from kivy.app import App
 from kivy.uix.actionbar import ActionBar
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
+from kivy.uix.image import Image
 from kivy.uix.slider import Slider
 from kivy.uix.video import Video
 from kivy.core.window import Window
@@ -12,6 +15,7 @@ import Directory.DeleteArchiveDirectory as deleteVideo
 from ModificText import ModificText
 from Directory.AddArchiveDirectory import AddArchiveDirectory
 from ActionVideo import ActionVideo
+from ControlSound.ActionSound import ActionSound
 
 class Menu(App):
     def build(self):
@@ -76,9 +80,13 @@ class Menu(App):
         #self.pbVolumen.value_normalized
         #self.pbVolumen.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
         #self.boxBack.add_widget(self.pbVolumen)
+        #Imagen Volumen
+        self.vimg = Image(source="../Picture/alto_volumen.png",size_hint=(None, 1))
+        self.vimg.padding = (0, 0)  # Aseguramos que la imagen no tenga relleno
+        self.boxBack.add_widget(self.vimg)
         #SeekBar Volumen
-        self.slider = Slider(min=0, max=100, value=25)
-        self.slider.bind(value=self.return_sound)
+        self.slider = Slider(min=0, max=100,step=1)
+        self.slider.bind(on_touch_up=self.return_sound)
         self.boxBack.add_widget(self.slider)
         # Añadir los BoxLayouts al layout principal
         self.layout.add_widget(self.boxNav)
@@ -118,11 +126,13 @@ class Menu(App):
             print('Error al siguiente video',error)
 
     def on_button_press(self, instance):
-        if self.video.source == '../Image/pause.png':
+        if self.video.source == '../Image/pause.png' or not os.path.isdir('../VideoStore'):
             if len(listVideo) != 0:
                 self.video.source = '../VideoStore/' + listVideo[numero]
                 self.video.state = 'play'
                 self.buttonPlay.text = "Pause"
+            else:
+                print('Nose encuentra directorio')
         elif self.video.state == 'play':
             self.video.state = 'pause'
             self.buttonPlay.text = "Play"
@@ -147,9 +157,14 @@ class Menu(App):
             deleteVideo.functionDeleteArchive(video_path)
         except Exception as error:
             print('Error al borrar',error)
-    def return_sound(self,instance,value):
+
+    def return_sound(self,instance,touch):
+
         try:
-            print('Sonido al ',value,'%')
+            if instance.collide_point(*touch.pos):
+                value = instance.value
+            actionSound.functionControlSound(value)
+            print(value)
         except Exception as error:
             print('Error al mover el sonido',error)
 if __name__ == "__main__":
@@ -161,6 +176,6 @@ if __name__ == "__main__":
     actionVideo=ActionVideo()
     actionVideoStore=AddCreateVideoStore()
     listVideo=actionVideo.listVideo()
-    print(listVideo)
     actionVideoStore.functionCreateVideoStore()
+    actionSound=ActionSound()
     Menu().run()

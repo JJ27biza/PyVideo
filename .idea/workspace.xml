@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CommitSonido">
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="SliderSonido">
+      <change afterPath="$PROJECT_DIR$/ControlSound/ActionSound.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Picture/alto_volumen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/Image/pause.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,22 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Menu.executor&quot;: &quot;Run&quot;,
-    &quot;Python.OpenDirectory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/micro/PycharmProjects/PyVideo/Grafic&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Menu.executor": "Run",
+    "Python.OpenDirectory.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/micro/PycharmProjects/PyVideo/Picture",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Picture" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Image" />
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Picture" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Menu">
@@ -142,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736020104939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="SliderSonido">
+      <option name="closed" value="true" />
+      <created>1736021155616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736021155616</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -162,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CreateVideoStore" />
     <MESSAGE value="CommitSonido" />
-    <option name="LAST_COMMIT_MESSAGE" value="CommitSonido" />
+    <MESSAGE value="SliderSonido" />
+    <option name="LAST_COMMIT_MESSAGE" value="SliderSonido" />
   </component>
 </project>
