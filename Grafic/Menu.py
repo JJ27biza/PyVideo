@@ -1,8 +1,8 @@
 import os.path
-
 from kivy.app import App
-from kivy.uix.actionbar import ActionBar
+from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
+
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.slider import Slider
@@ -11,10 +11,12 @@ from kivy.core.window import Window
 from Directory.DeleteArchiveDirectory import DeleteArchiveDirectory
 from Directory.OpenDirectory import OpenDirectory
 from Directory.AddCreateVideoStore import AddCreateVideoStore
+from ffpyplayer.player import MediaPlayer
 import Directory.DeleteArchiveDirectory as deleteVideo
 from ModificText import ModificText
 from Directory.AddArchiveDirectory import AddArchiveDirectory
 from ActionVideo import ActionVideo
+from ffpyplayer.player import MediaPlayer
 from ControlSound.ActionSound import ActionSound
 
 class Menu(App):
@@ -24,6 +26,7 @@ class Menu(App):
         self.title = 'PyVideo'
         # Layout principal (vertical)
         self.layout = BoxLayout(orientation='vertical')
+        # Crear el objeto MediaPlayer de ffpyplayer
         # Crear BoxLayouts con diferentes tamaños (size_hint)
         self.boxNav = BoxLayout(orientation='horizontal', size_hint=(1, 0.1))# BoxNav ocupa solo 10% de la altura
         self.boxBack = BoxLayout(orientation='horizontal', size_hint=(0.5, 0.1))
@@ -59,7 +62,9 @@ class Menu(App):
 
         # Video
 
-        self.video = Video(source= '../Image/pause.png',state="pause",size_hint=(1, 1),pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.video = Video(source= '../Image/pause.png',state="pause")
+
+
         self.box.add_widget(self.video)
         # Botón Delante
         self.buttonDelante = Button(text="Delante", size_hint=(0.1, 0.2))
@@ -177,21 +182,36 @@ class Menu(App):
              actionSound.functionControlSound(instance.value)
         except Exception as error:
             print('Error al mover el sonido',error)
-    def on_button_maximize(self,instance):
+
+    def on_button_maximize(self, instance):
         try:
             self.layout.size_hint = (1, 1)
             self.layout.padding = (0, 0)
             self.layout.spacing = 0
+
             self.layout.remove_widget(self.boxNav)
             self.layout.remove_widget(self.boxBack)
             self.box.remove_widget(self.buttonAtras)
             self.box.remove_widget(self.buttonDelante)
-            self.box.size_hint=(1, 1)
+
+            self.box.size_hint = (1, 1)
             self.video.size_hint = (1, 1)
+            self.video.keep_ratio = False
+            self.video.allow_stretch = True
+
+            self.video.pos_hint = {'center_x': 0.5, 'center_y': 0.5}  # Centra el video en la pantalla
+
+
+            # Maximiza la ventana
+            Window.fullscreen=True
+
+            self.video.size = Window.size
+
             self.video.bind(on_touch_down=self.on_video_click)
 
         except Exception as error:
-            print('Error al maximizar el video',error)
+            print('Error al maximizar el video:', error)
+
     def on_video_click(self,instance,touch):
         try:
             self.box.remove_widget(self.video)
@@ -204,24 +224,28 @@ class Menu(App):
             self.box.size_hint = (1, 0.8)
             self.layout.add_widget(self.box)
             self.layout.add_widget(self.boxBack)
+            Window.fullscreen=False
             self.video.unbind(on_touch_down=self.on_video_click)
+
         except Exception as error:
             print('Error al hacer click en el video',error)
-    def on_click_sum(self,instance):
-        try:
-            if self.video.state == 'play':
-                # Calcular nueva posición
-                new_position = self.video.position + 30
 
-                # Si la nueva posición no excede la duración del video
-                if new_position < self.video.duration:
-                    self.video.position = new_position
-                else:
-                    # Si el video ya ha alcanzado el final, ponlo al final
-                    self.video.position = self.video.duration
+    def on_click_sum(self, instance):
+       try:
+           # Obtener la posición actual del video
+           current_position = self.video.position
 
-        except Exception as error:
-            print('Error al sumar el video',error)
+           # Adelantar 30 segundos (solo si no sobrepasa la duración del video)
+           new_position = current_position + 30
+           if new_position < self.video.duration:
+               self.video.position = new_position
+               self.video.seek(int(new_position),False)
+           else:
+               self.video.position = self.video.duration  # Si supera la duración, pon el video al final
+       except Exception as error:
+           print('Error al adelantar el video',error)
+
+
 if __name__ == "__main__":
     op = OpenDirectory()
     delete=ModificText()
