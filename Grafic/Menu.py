@@ -2,7 +2,8 @@ import os.path
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
-
+import sys
+sys.path.append('C:/Users/micro/PycharmProjects/PyVideo/')
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.slider import Slider
@@ -240,6 +241,7 @@ class Menu(App):
            if new_position < self.video.duration:
                self.video.position = new_position
                self.video.seek(int(new_position),False)
+               print('Adelanto de ',new_position)
            else:
                self.video.position = self.video.duration  # Si supera la duración, pon el video al final
        except Exception as error:

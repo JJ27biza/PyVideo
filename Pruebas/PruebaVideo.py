@@ -1,54 +1,53 @@
 import cv2
-from kivy.app import App
-from kivy.uix.image import Image
-from kivy.graphics.texture import Texture
-from kivy.clock import Clock
-from Directory.DeleteArchiveDirectory import DeleteArchiveDirectory
-from Directory.OpenDirectory import OpenDirectory
-from Directory.AddCreateVideoStore import AddCreateVideoStore
-import Directory.DeleteArchiveDirectory as deleteVideo
-from ModificText import ModificText
-from Directory.AddArchiveDirectory import AddArchiveDirectory
-from ActionVideo import ActionVideo
-from ControlSound.ActionSound import ActionSound
+import numpy as np
+import time
 
-class VideoApp(App):
-    def build(self):
-        # Creamos un widget de imagen que se usará para mostrar el video
-        self.img = Image()
-        # Abrimos la cámara o el archivo de video (0 es la cámara predeterminada)
-        self.capture = cv2.VideoCapture('../VideoStore/SuperSalto.mkv')
+# Ruta del archivo de video
+video_path = '../VideoStore/LockBoxPC.mp4'
 
-        # Verificamos si la cámara o el archivo se abrió correctamente
-        if not self.capture.isOpened():
-            print("Error al abrir la cámara o el archivo de video.")
-            return
+# Crear el objeto VideoCapture
+capture = cv2.VideoCapture(video_path)
 
-        # Iniciamos el reloj de Kivy para actualizar la imagen
-        Clock.schedule_interval(self.update_frame, 1.0 / 30.0)  # 30 FPS
+# Verificar si el video se abrió correctamente
+if not capture.isOpened():
+    print("Error: No se puede abrir el video.")
+    exit()
 
-        return self.img
+# Variables para controlar la pausa
+is_paused = False
+paused_frame = None
 
-    def update_frame(self, dt):
-        # Leemos el siguiente cuadro del video
-        ret, frame = self.capture.read()
+while True:
+    # Esperar a que el usuario presione una tecla para pausar o reanudar el video
+    key = cv2.waitKey(1) & 0xFF
 
-        if ret:
-            # Convertimos el cuadro de BGR (OpenCV) a RGB (Kivy)
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frame = cv2.flip(frame, 0)
+    if key == ord('p'):  # Presionar 'p' para pausar/reanudar
+        is_paused = not is_paused
+        print("Pausado" if is_paused else "Reanudado")
 
-            # Creamos una textura a partir del cuadro y la asignamos al widget Image
-            texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='rgb')
-            texture.blit_buffer(frame.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
+    if is_paused:
+        # Si está pausado, no leer el siguiente frame, simplemente mostrar el frame actual
+        if paused_frame is not None:
+            cv2.imshow('Video', paused_frame)
+        continue
 
-            # Asignamos la textura a la imagen
-            self.img.texture = texture
+    # Leer el siguiente frame
+    ret, frame = capture.read()
 
-    def on_stop(self):
-        # Cerramos el video cuando la aplicación se detiene
-        if self.capture.isOpened():
-            self.capture.release()
+    if not ret:
+        print("Fin del video.")
+        break
 
-if __name__ == "__main__":
-    VideoApp().run()
+    # Mostrar el frame
+    cv2.imshow('Video', frame)
+
+    # Guardar el frame para mostrarlo cuando se pause
+    paused_frame = frame
+
+    # Salir si el usuario presiona 'q'
+    if key == ord('q'):
+        break
+
+# Liberar recursos
+capture.release()
+cv2.destroyAllWindows()
