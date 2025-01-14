@@ -31,10 +31,10 @@ from kivy.graphics.texture import Texture
 class Menu(App):
     def build(self):
         self.capture = None
-        self.pauseAction=False
+        self.pauseAction = False
         self.buttonPlay = None  # Asumimos que tienes el botón Play/Pause
         self.listVideo = []  # Lista de videos disponibles en el directorio
-        self.video_path='../Image/pause.png'
+        self.video_path = '../Image/pause.png'
         Window.maximize()
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
         self.title = 'PyVideo'
@@ -78,8 +78,6 @@ class Menu(App):
 
         # Crear el widget de imagen donde se mostrará el video
         self.img = Image(source=self.video_path)
-
-
 
         self.box.add_widget(self.img)
         # Botón Delante
@@ -174,6 +172,14 @@ class Menu(App):
     def on_press_Añadir(self,instance):
         global listVideo
         try:
+            # Llamado cuando el botón "Cerrar la ejecución" es presionado
+            print("La aplicación se cerrará.")
+            self.capture=cv2.VideoCapture(0)
+            # Liberar el recurso de captura de OpenCV
+            if self.capture is not None:
+                self.capture.release()  # Libera el recurso de la cámara
+
+            # Detener la aplicación de Kivy
             self.stop()
             op.run()
             url_video = delete.functionDeleteText(op.label.text)

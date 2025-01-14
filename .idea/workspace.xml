@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CommitSonido">
+      <change afterPath="$PROJECT_DIR$/Pruebas/Emitir.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/PruebaVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/PruebaVideo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.Emitir.executor": "Run",
+    "Python.ListaEmitir.executor": "Run",
     "Python.Menu.executor": "Run",
     "Python.NuevoMenu.executor": "Run",
     "Python.OpenDirectory.executor": "Run",
@@ -66,7 +68,52 @@
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.NuevoMenu">
+  <component name="RunManager" selected="Python.ListaEmitir">
+    <configuration name="Emitir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/Emitir.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ListaEmitir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/ListaEmitir.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Menu" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -99,6 +146,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -158,12 +206,16 @@
     </configuration>
     <list>
       <item itemvalue="Python.Menu" />
+      <item itemvalue="Python.Emitir" />
+      <item itemvalue="Python.ListaEmitir" />
       <item itemvalue="Python.PruebaVideo" />
       <item itemvalue="Python.NuevoMenu" />
       <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ListaEmitir" />
+        <item itemvalue="Python.Emitir" />
         <item itemvalue="Python.NuevoMenu" />
         <item itemvalue="Python.PruebaVideo" />
         <item itemvalue="Python.main" />
