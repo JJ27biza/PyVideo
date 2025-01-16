@@ -1,53 +1,40 @@
-import cv2
-import numpy as np
+import os
 import time
+import threading
+from flask import Flask, send_from_directory
 
-# Ruta del archivo de video
-video_path = '../VideoStore/LockBoxPC.mp4'
+# Configura la ruta al video local
+video_path = '../VideoStore/SuperSalto.mkv'  # Cambia esta ruta a la ruta de tu video
+video_filename = os.path.basename(video_path)
 
-# Crear el objeto VideoCapture
-capture = cv2.VideoCapture(video_path)
+# Crear una aplicación Flask para servir el video
+app = Flask(__name__)
 
-# Verificar si el video se abrió correctamente
-if not capture.isOpened():
-    print("Error: No se puede abrir el video.")
-    exit()
+# Ruta para servir el archivo de video
+@app.route('/video')
+def serve_video():
+    # Sirve el archivo con el tipo MIME adecuado según el formato de video
+    mime_type = 'video/mp4' if video_filename.endswith('.mp4') else 'video/mkv'  # Cambia según tu tipo de archivo
+    print(f"Sirviendo el archivo {video_filename} con MIME {mime_type}")
+    return send_from_directory(os.path.dirname(video_path), video_filename, mimetype=mime_type)
 
-# Variables para controlar la pausa
-is_paused = False
-paused_frame = None
+# Función para iniciar el servidor HTTP
+def start_server():
+    app.run(host='0.0.0.0', port=5000, threaded=True)
 
+# Iniciar el servidor HTTP en un hilo separado
+server_thread = threading.Thread(target=start_server)
+server_thread.daemon = True
+server_thread.start()
+
+# Reproducir el video en un bucle infinito
 while True:
-    # Esperar a que el usuario presione una tecla para pausar o reanudar el video
-    key = cv2.waitKey(1) & 0xFF
+    print("Reproduciendo el video...")
+    time.sleep(1)  # Simulamos que el video se está reproduciendo (solo como referencia)
 
-    if key == ord('p'):  # Presionar 'p' para pausar/reanudar
-        is_paused = not is_paused
-        print("Pausado" if is_paused else "Reanudado")
+    # Aquí puedes agregar alguna lógica para reiniciar o comprobar que el video se sirvió correctamente.
+    # Este es un bucle simple, en el que el servidor seguirá sirviendo el video sin intervención.
 
-    if is_paused:
-        # Si está pausado, no leer el siguiente frame, simplemente mostrar el frame actual
-        if paused_frame is not None:
-            cv2.imshow('Video', paused_frame)
-        continue
-
-    # Leer el siguiente frame
-    ret, frame = capture.read()
-
-    if not ret:
-        print("Fin del video.")
-        break
-
-    # Mostrar el frame
-    cv2.imshow('Video', frame)
-
-    # Guardar el frame para mostrarlo cuando se pause
-    paused_frame = frame
-
-    # Salir si el usuario presiona 'q'
-    if key == ord('q'):
-        break
-
-# Liberar recursos
-capture.release()
-cv2.destroyAllWindows()
+    # Espera 30 segundos antes de simular que el video ha terminado y reiniciarlo.
+    time.sleep(30)  # Ajusta este tiempo según la duración del video
+    print("El video ha terminado. Reiniciando la reproducción...")
