@@ -7,7 +7,7 @@ def listar_chromecasts():
     if chromecasts:
         print("Dispositivos Chromecast disponibles:")
         for idx, cast in enumerate(chromecasts):
-            print(f"{idx + 1}. {cast.name}" )
+            print(f"{idx + 1}. {cast.name,cast.cast_info}" )
     else:
         print("No se encontraron dispositivos Chromecast en la red.")
 

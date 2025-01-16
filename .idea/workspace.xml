@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="CommitSonido">
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="ChromecastList">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/Emitir.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/Emitir.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,7 @@
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ListaEmitir">
+  <component name="RunManager" selected="Python.Emitir">
     <configuration name="Emitir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -212,9 +213,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ListaEmitir" />
         <item itemvalue="Python.Emitir" />
         <item itemvalue="Python.NuevoMenu" />
+        <item itemvalue="Python.ListaEmitir" />
         <item itemvalue="Python.PruebaVideo" />
         <item itemvalue="Python.main" />
       </list>
@@ -244,7 +245,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736020104939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="CommitSonido">
+      <option name="closed" value="true" />
+      <created>1736879139875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736879139875</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ChromecastList">
+      <option name="closed" value="true" />
+      <created>1736879177414</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736879177414</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -264,6 +281,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CreateVideoStore" />
     <MESSAGE value="CommitSonido" />
-    <option name="LAST_COMMIT_MESSAGE" value="CommitSonido" />
+    <MESSAGE value="ChromecastList" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChromecastList" />
   </component>
 </project>
