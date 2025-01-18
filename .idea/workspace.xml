@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="ChromecastList">
-      <change afterPath="$PROJECT_DIR$/AudioExtraction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AudioToText.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Subtitules.py" afterDir="false" />
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="AudioSubtitulos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/Chrom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirLocal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/EmitirLocal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/PruebaVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/PruebaVideo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +51,8 @@
     "Python.AudioExtraction.executor": "Run",
     "Python.AudioToText.executor": "Run",
     "Python.Emitir.executor": "Run",
+    "Python.EmitirLocal.executor": "Run",
+    "Python.EmitirYouTube.executor": "Run",
     "Python.ListaEmitir.executor": "Run",
     "Python.Menu.executor": "Run",
     "Python.NuevoMenu.executor": "Run",
@@ -73,8 +74,8 @@
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.NuevoMenu">
-    <configuration name="AudioExtraction" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.EmitirYouTube">
+    <configuration name="EmitirLocal" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,56 +84,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AudioExtraction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AudioToText" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyVideo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AudioToText.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Emitir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyVideo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/Emitir.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/EmitirLocal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="EmitirYouTube" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,21 +187,43 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PruebaVideo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/PruebaVideo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.Menu" />
-      <item itemvalue="Python.AudioExtraction" />
-      <item itemvalue="Python.AudioToText" />
-      <item itemvalue="Python.Emitir" />
+      <item itemvalue="Python.EmitirLocal" />
+      <item itemvalue="Python.EmitirYouTube" />
+      <item itemvalue="Python.PruebaVideo" />
       <item itemvalue="Python.ListaEmitir" />
       <item itemvalue="Python.NuevoMenu" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.NuevoMenu" />
-        <item itemvalue="Python.AudioExtraction" />
-        <item itemvalue="Python.AudioToText" />
-        <item itemvalue="Python.Emitir" />
+        <item itemvalue="Python.EmitirYouTube" />
+        <item itemvalue="Python.EmitirLocal" />
+        <item itemvalue="Python.PruebaVideo" />
         <item itemvalue="Python.ListaEmitir" />
+        <item itemvalue="Python.NuevoMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -267,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736879177414</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="AudioSubtitulos">
+      <option name="closed" value="true" />
+      <created>1737134018626</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737134018626</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -288,6 +296,7 @@
     <MESSAGE value="CreateVideoStore" />
     <MESSAGE value="CommitSonido" />
     <MESSAGE value="ChromecastList" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChromecastList" />
+    <MESSAGE value="AudioSubtitulos" />
+    <option name="LAST_COMMIT_MESSAGE" value="AudioSubtitulos" />
   </component>
 </project>

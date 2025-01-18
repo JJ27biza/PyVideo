@@ -1,7 +1,7 @@
 import os
 import time
 import threading
-from flask import Flask, send_from_directory
+from flask import Flask, send_file
 
 # Configura la ruta al video local
 video_path = '../VideoStore/SuperSalto.mkv'  # Cambia esta ruta a la ruta de tu video
@@ -13,10 +13,9 @@ app = Flask(__name__)
 # Ruta para servir el archivo de video
 @app.route('/video')
 def serve_video():
-    # Sirve el archivo con el tipo MIME adecuado según el formato de video
-    mime_type = 'video/mp4' if video_filename.endswith('.mp4') else 'video/mkv'  # Cambia según tu tipo de archivo
-    print(f"Sirviendo el archivo {video_filename} con MIME {mime_type}")
-    return send_from_directory(os.path.dirname(video_path), video_filename, mimetype=mime_type)
+    # Sirve el archivo de video y establece el tipo MIME adecuado
+    print(f"Sirviendo el archivo {video_filename}")
+    return send_file(video_path, mimetype='video/x-matroska')  # Tipo MIME para MKV
 
 # Función para iniciar el servidor HTTP
 def start_server():
@@ -38,3 +37,4 @@ while True:
     # Espera 30 segundos antes de simular que el video ha terminado y reiniciarlo.
     time.sleep(30)  # Ajusta este tiempo según la duración del video
     print("El video ha terminado. Reiniciando la reproducción...")
+

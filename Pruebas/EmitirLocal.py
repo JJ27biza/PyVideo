@@ -5,7 +5,7 @@ from flask import Flask, send_from_directory
 import pychromecast
 
 # Configura la ruta al video local
-video_path = '../VideoStore/SuperSalto.mkv'  # Cambia esta ruta a la ruta de tu video
+video_path = '../VideoStore/Qué es una integral. Explicación desde cero - Matemáticas con Juan (720p, h264).mp4'  # Cambia esta ruta a la ruta de tu video
 video_filename = os.path.basename(video_path)
 
 # Crear una aplicación Flask para servir el video
@@ -14,14 +14,13 @@ app = Flask(__name__)
 # Ruta para servir el archivo de video
 @app.route('/video')
 def serve_video():
-    # Sirve el archivo con el tipo MIME adecuado según el formato de video
-    mime_type = 'video/mp4' if video_filename.endswith('.mp4') else 'video/mkv'  # Cambia según tu tipo de archivo
+    mime_type = 'video/mp4' if video_filename.endswith('.mp4') else 'video/x-matroska'  # Cambia según tu tipo de archivo
     print(f"Sirviendo el archivo {video_filename} con MIME {mime_type}")
     return send_from_directory(os.path.dirname(video_path), video_filename, mimetype=mime_type)
 
 # Función para iniciar el servidor HTTP
 def start_server():
-    app.run(host='0.0.0.0', port=5000, threaded=True)
+    app.run(host='0.0.0.0', port=5000, threaded=True, use_reloader=False)  # `use_reloader=False` evita la reinicialización en desarrollo
 
 # Iniciar el servidor HTTP en un hilo separado
 server_thread = threading.Thread(target=start_server)
@@ -31,8 +30,8 @@ server_thread.start()
 # Esperar a que el servidor se inicie
 time.sleep(2)
 
-# URL local donde el servidor sirve el video
-video_url = 'http://localhost:5000/video'
+# Obtener la IP de la máquina en lugar de 'localhost' para que otros dispositivos puedan acceder
+video_url = 'http://192.168.8.103:5000/video'  # Usa la IP local de tu máquina
 
 # Descubre los dispositivos Chromecast disponibles en la red
 chromecasts, browser = pychromecast.get_chromecasts()
@@ -50,9 +49,14 @@ chromecast.wait()
 # Obtener el controlador de medios
 media_controller = chromecast.media_controller
 
+# Verifica si el Chromecast está listo para reproducir medios
+if not media_controller.status or media_controller.status.player_state == 'IDLE':
+    print("El Chromecast no está listo para reproducir.")
+    exit()
+
 # Reproducir el video utilizando el media_controller
 print("Reproduciendo el video...")
-media_controller.play_media(video_url, 'video/mp4')  # Asegúrate de usar el formato correcto
+media_controller.play_media(video_url, 'video/mp4')  # Usa el formato correcto para el archivo
 
 # Espera a que el video esté listo para reproducirse
 media_controller.block_until_active()  # Bloquea hasta que el video comience a reproducirse
@@ -67,3 +71,7 @@ if media_controller.status.player_state == 'PLAYING':
     print("El video se está reproduciendo con éxito.")
 else:
     print("No se pudo reproducir el video. Estado actual:", media_controller.status.player_state)
+
+# Evitar que el servidor Flask se cierre
+while True:
+    time.sleep(60)  # Mantén el servidor funcionando indefinidamente

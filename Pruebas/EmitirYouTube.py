@@ -3,7 +3,7 @@ import pychromecast
 from pychromecast.controllers.youtube import YouTubeController
 
 # URL del video de YouTube
-video_url = 'J3Mvji1gLLs'
+video_url = 'h5oEPfkcAQg'
 
 # Descubre los dispositivos Chromecast disponibles en la red
 chromecasts, browser = pychromecast.get_chromecasts()
