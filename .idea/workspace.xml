@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="AudioSubtitulos">
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/avcodec-61.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/avdevice-61.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/avfilter-10.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/avformat-61.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/avutil-59.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/ffmpeg.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/ffplay.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/ffprobe.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/postproc-58.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/swresample-5.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg/bin/swscale-8.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AudioToText.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioToText.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Subtitules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subtitules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="AudioSubtitulos" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
