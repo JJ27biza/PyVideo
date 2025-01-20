@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="AudioSubtitulos" />
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="AudioSubtitulos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Subtitules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subtitules.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,19 +62,20 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/micro/PycharmProjects/PyVideo/ffmpeg",
+    "last_opened_file_path": "C:/Users/micro/PycharmProjects/PyVideo/build",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\build" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\ffmpeg" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\VideoStore" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Image" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.PruebaFFMEPG">
+  <component name="RunManager" selected="Python.Subtitules">
     <configuration name="AudioToText" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -209,17 +213,17 @@
     <list>
       <item itemvalue="Python.Menu" />
       <item itemvalue="Python.AudioToText" />
-      <item itemvalue="Python.PruebaFFMEPG" />
-      <item itemvalue="Python.Subtitules" />
       <item itemvalue="Python.EmitirYouTube" />
       <item itemvalue="Python.NuevoMenu" />
+      <item itemvalue="Python.PruebaFFMEPG" />
+      <item itemvalue="Python.Subtitules" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PruebaFFMEPG" />
         <item itemvalue="Python.Subtitules" />
-        <item itemvalue="Python.AudioToText" />
         <item itemvalue="Python.NuevoMenu" />
+        <item itemvalue="Python.PruebaFFMEPG" />
+        <item itemvalue="Python.AudioToText" />
         <item itemvalue="Python.EmitirYouTube" />
       </list>
     </recent_temporary>
@@ -227,7 +231,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
+        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
       </set>
     </attachedChunks>
   </component>
