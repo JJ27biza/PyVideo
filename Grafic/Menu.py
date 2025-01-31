@@ -6,6 +6,7 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 import sys
 
+
 from numpy.lib.utils import source
 
 sys.path.append('C:/Users/micro/PycharmProjects/PyVideo/')
@@ -27,14 +28,19 @@ import cv2
 import numpy as np
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
+import pygame
+import AudioExtraction as audio
+
 
 class Menu(App):
     def build(self):
         self.capture = None
         self.pauseAction = False
-        self.buttonPlay = None  # Asumimos que tienes el botón Play/Pause
+        self.buttonPlay = None
+        self.audio_started = False
         self.listVideo = []  # Lista de videos disponibles en el directorio
         self.video_path = '../Image/pause.png'
+        pygame.mixer.init()
         Window.maximize()
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
         self.title = 'PyVideo'
@@ -155,9 +161,20 @@ class Menu(App):
             print('Error al adelantar el video', error)
 
     def on_button_press(self, instance):
+        if self.video_path == '../Image/pause.png':
+            pygame.mixer.music.load(
+                '../SoundStore/' + listVideo[numero] + '_audio.mp3')  # Asegúrate de tener el audio como archivo mp3
+            pygame.mixer.music.play()
+
+        elif not self.pauseAction :
+            # Obtener el archivo de audio del video
+            pygame.mixer.music.pause()
+        else:
+            pygame.mixer.music.play()
         # Comprobar si ya se ha cargado el video
         if self.capture is None or not self.capture.isOpened():
             if len(listVideo) != 0:
+
                 # Si no se ha cargado el video, cargar el video actual desde la lista
                 self.capture = cv2.VideoCapture('../VideoStore/' + listVideo[numero])
                 self.video_path='../VideoStore/' + listVideo[numero]
@@ -184,7 +201,9 @@ class Menu(App):
             op.run()
             url_video = delete.functionDeleteText(op.label.text)
             url_correcta = delete.functionValidationUrl(url_video)
+            url_audio= audio.extraction_Audio(url_correcta)
             addD.functionAddArchiveDirectory(url_correcta, "../VideoStore")
+            addD.functionAddArchiveDirectory(url_audio, "../SoundStore")
         except Exception as error:
             print('Error al añadir', error)
     def on_press_Borrar(self,instance):
@@ -249,8 +268,6 @@ class Menu(App):
         except Exception as error:
             print('Error al hacer click en el video',error)
 
-
-
     def update(self, dt):
         # Asegurarse de que el video esté cargado
         if self.capture is None or not self.capture.isOpened():
@@ -294,6 +311,9 @@ class Menu(App):
 
             # Mostrar la textura en el widget de imagen
             self.img.texture = texture
+            # Reproducir audio solo una vez al principio
+
+
         else:
             # Si el video ha terminado (ret es False), mostrar la imagen
             self.show_end_image()
@@ -313,7 +333,6 @@ class Menu(App):
         # Mostrar la textura en el widget de imagen
         self.img.texture = texture
         self.capture.release()
-
     def adelantar_30s(self,instance):
         # Asegúrate de que el video está abierto
         if self.capture is not None and self.capture.isOpened():
@@ -327,6 +346,7 @@ class Menu(App):
             self.capture.set(cv2.CAP_PROP_POS_MSEC, new_time_ms)
 
             print(f"Adelantando 30 segundos: del tiempo {current_time_ms}ms al tiempo {new_time_ms}ms")
+
     def atrasar_30s(self,instance):
         # Asegúrate de que el video está abierto
         if self.capture is not None and self.capture.isOpened():
@@ -355,6 +375,8 @@ if __name__ == "__main__":
     actionVideo=ActionVideo()
     actionVideoStore=AddCreateVideoStore()
     listVideo=actionVideo.listVideo()
-    actionVideoStore.functionCreateVideoStore()
+    actionVideoStore.functionCreateVideoStore('VideoStore')
+    actionVideoStore.functionCreateVideoStore('SoundStore')
+
     actionSound=ActionSound()
     Menu().run()

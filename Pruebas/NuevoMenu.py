@@ -6,6 +6,7 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 import sys
 
+
 from numpy.lib.utils import source
 
 sys.path.append('C:/Users/micro/PycharmProjects/PyVideo/')
@@ -27,14 +28,22 @@ import cv2
 import numpy as np
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
+import pygame
+import AudioExtraction as audio
+
 
 class Menu(App):
     def build(self):
         self.capture = None
         self.pauseAction = False
-        self.buttonPlay = None  # Asumimos que tienes el botón Play/Pause
+        self.buttonPlay = None
+        self.audio_started = False
         self.listVideo = []  # Lista de videos disponibles en el directorio
         self.video_path = '../Image/pause.png'
+        self.buttonPlay = None  # Este debería ser un botón en tu interfaz Kivy
+        self.video_time = 0  # Mantener la posición del video
+        self.paused_frame = None  # Para mantener el último frame pausado
+        pygame.mixer.init()
         Window.maximize()
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
         self.title = 'PyVideo'
@@ -52,14 +61,18 @@ class Menu(App):
         self.buttonAñadir.bind(on_press=self.on_press_Añadir)
         self.boxNav.add_widget(self.buttonAñadir)
         # Botón Añadir Bluethoot
-        self.buttonBluethoot=Button(text="Añadir Bluetooth",size_hint=(0.1,1))
-        self.boxNav.add_widget(self.buttonBluethoot)
+        self.buttonEnviar=Button(text="Enviar Video",size_hint=(0.1,1))
+        self.boxNav.add_widget(self.buttonEnviar)
+
+        self.buttonRecibir = Button(text="Recibir Video", size_hint=(0.1, 1))
+        self.boxNav.add_widget(self.buttonRecibir)
+
         # Botón Enviar Bluetooth
-        self.buttonEnviarVideo=Button(text="Enviar Blutooth",size_hint=(0.1,1))
-        self.boxNav.add_widget(self.buttonEnviarVideo)
+        self.buttonEmitirLocal=Button(text="Emitir Local",size_hint=(0.1,1))
+        self.boxNav.add_widget(self.buttonEmitirLocal)
         # Botón Descargar Video
-        self.buttonEmitir=Button(text="Emitir Video",size_hint=(0.1,1))
-        self.boxNav.add_widget(self.buttonEmitir)
+        self.buttonEmitirYouTube=Button(text="Emitir YouTube",size_hint=(0.1,1))
+        self.boxNav.add_widget(self.buttonEmitirYouTube)
         # Botón Borrar Video
         self.buttonBorrarVideo=Button(text="Borrar",size_hint=(0.1,1))
         self.buttonBorrarVideo.bind(on_press=self.on_press_Borrar)
@@ -71,10 +84,6 @@ class Menu(App):
         self.buttonAtras.bind(on_press=self.on_button_atras)
 
         self.box.add_widget(self.buttonAtras)
-
-
-
-        # Video
 
         # Crear el widget de imagen donde se mostrará el video
         self.img = Image(source=self.video_path)
@@ -132,6 +141,7 @@ class Menu(App):
             if numero < len(listVideo) + 1:
                 numero -= 1  # Avanzar al siguiente video
                 self.video_path = '../VideoStore/' + listVideo[numero]
+                pygame.mixer.music.load('../SoundStore/' + listVideo[numero] + '_audio.mp3')
                 self.capture = cv2.VideoCapture(self.video_path)  # Cargar el siguiente video
                 print(f"Reproduciendo: {listVideo[numero]}", 'Numero: ', numero)
             else:
@@ -147,6 +157,7 @@ class Menu(App):
             if numero < len(listVideo) -1:
                 numero += 1  # Avanzar al siguiente video
                 self.video_path= '../VideoStore/' + listVideo[numero]
+                pygame.mixer.music.load('../SoundStore/' + listVideo[numero] + '_audio.mp3')
                 self.capture = cv2.VideoCapture(self.video_path)  # Cargar el siguiente video
                 print(f"Reproduciendo: {listVideo[numero]}", 'Numero: ', numero)
             else:
@@ -158,14 +169,38 @@ class Menu(App):
         # Comprobar si ya se ha cargado el video
         if self.capture is None or not self.capture.isOpened():
             if len(listVideo) != 0:
-                # Si no se ha cargado el video, cargar el video actual desde la lista
-                self.capture = cv2.VideoCapture('../VideoStore/' + listVideo[numero])
-                self.video_path='../VideoStore/' + listVideo[numero]
-                Clock.schedule_interval(self.update, 1.0 / 30.0)
+                if self.video_path == '../Image/pause.png':
+                    print('Cargar video y audio')
+
+                    # Cargar el archivo de video
+                    self.video_path = '../VideoStore/' + listVideo[numero]
+                    self.capture = cv2.VideoCapture(self.video_path)
+
+                    # Cargar y reproducir el audio
+                    audio_path = '../SoundStore/' + listVideo[numero] + '_audio.mp3'
+                    pygame.mixer.music.load(audio_path)
+
+                    # Reproducir el audio desde el inicio y sincronizar con el video
+                    pygame.mixer.music.play(loops=0, start=0.0)
+
+                    # Comenzar la actualización del video
+                    Clock.schedule_interval(self.update, 1.0 / 30.0)
+
+                else:
+                    print('Reproducir solo el audio')
+                    pygame.mixer.music.play(loops=0,
+                                            start=self.video_time)  # Comienza el audio desde el tiempo actual del video
+
             else:
                 print('No se encuentra el directorio')
+
         else:
-            # Si ya está cargado, solo alternar el estado de pausa
+            if self.video_path != '../Image/pause.png':
+                # Pausar el video y el audio simultáneamente
+                pygame.mixer.music.pause()
+                self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.video_time * 30)  # Guardar la posición en segundos
+
+            # Alternar entre pausa y play
             self.pauseAction = not self.pauseAction
             self.buttonPlay.text = 'Play' if self.pauseAction else 'Pause'
 
@@ -184,7 +219,9 @@ class Menu(App):
             op.run()
             url_video = delete.functionDeleteText(op.label.text)
             url_correcta = delete.functionValidationUrl(url_video)
+            url_audio= audio.extraction_Audio(url_correcta)
             addD.functionAddArchiveDirectory(url_correcta, "../VideoStore")
+            addD.functionAddArchiveDirectory(url_audio, "../SoundStore")
         except Exception as error:
             print('Error al añadir', error)
     def on_press_Borrar(self,instance):
@@ -249,8 +286,6 @@ class Menu(App):
         except Exception as error:
             print('Error al hacer click en el video',error)
 
-
-
     def update(self, dt):
         # Asegurarse de que el video esté cargado
         if self.capture is None or not self.capture.isOpened():
@@ -294,8 +329,16 @@ class Menu(App):
 
             # Mostrar la textura en el widget de imagen
             self.img.texture = texture
+
+            # Mantener el tiempo actual del video (en segundos)
+            self.video_time = self.capture.get(cv2.CAP_PROP_POS_MSEC) / 1000
+
+            # Reproducir el audio solo una vez al principio (si no está en reproducción)
+            if not pygame.mixer.music.get_busy():
+                pygame.mixer.music.play(loops=0, start=self.video_time)
+
         else:
-            # Si el video ha terminado (ret es False), mostrar la imagen
+            # Si el video ha terminado (ret es False), mostrar la imagen final y detener el audio
             self.show_end_image()
 
     def show_end_image(self):
@@ -312,38 +355,57 @@ class Menu(App):
 
         # Mostrar la textura en el widget de imagen
         self.img.texture = texture
+        pygame.mixer.music.stop()  # Detener el audio cuando termina el video
         self.capture.release()
 
-    def adelantar_30s(self,instance):
+    def adelantar_30s(self, instance):
         # Asegúrate de que el video está abierto
         if self.capture is not None and self.capture.isOpened():
-            # Obtener la posición actual en milisegundos
+            # Obtener la posición actual en milisegundos (para el video)
             current_time_ms = self.capture.get(cv2.CAP_PROP_POS_MSEC)
 
             # Adelantar 30 segundos (30000 milisegundos)
             new_time_ms = current_time_ms + 30000  # 30 segundos en milisegundos
 
-            # Establecer la nueva posición en milisegundos
+            # Establecer la nueva posición en milisegundos para el video
             self.capture.set(cv2.CAP_PROP_POS_MSEC, new_time_ms)
 
+            # Sincronizar el audio
+            new_time_seconds = new_time_ms / 1000  # Convertir a segundos
+            pygame.mixer.music.set_pos(new_time_seconds)  # Establecer la posición en el audio
+
             print(f"Adelantando 30 segundos: del tiempo {current_time_ms}ms al tiempo {new_time_ms}ms")
-    def atrasar_30s(self,instance):
+
+    def atrasar_30s(self, instance):
         # Asegúrate de que el video está abierto
         if self.capture is not None and self.capture.isOpened():
-            # Obtener la posición actual en milisegundos
+            # Obtener la posición actual en milisegundos (para el video)
             current_time_ms = self.capture.get(cv2.CAP_PROP_POS_MSEC)
 
-            # Adelantar 30 segundos (30000 milisegundos)
+            # Atrasar 30 segundos (30000 milisegundos)
             new_time_ms = current_time_ms - 30000  # 30 segundos en milisegundos
 
-            # Establecer la nueva posición en milisegundos
+            # Asegurarse de no atrasar más allá del inicio del video
+            new_time_ms = max(new_time_ms, 0)
+
+            # Establecer la nueva posición en milisegundos para el video
             self.capture.set(cv2.CAP_PROP_POS_MSEC, new_time_ms)
 
-            print(f"Adelantando 30 segundos: del tiempo {current_time_ms}ms al tiempo {new_time_ms}ms")
+            # Sincronizar el audio
+            new_time_seconds = new_time_ms / 1000  # Convertir a segundos
+            pygame.mixer.music.set_pos(new_time_seconds)  # Establecer la posición en el audio
+
+            print(f"Atrasando 30 segundos: del tiempo {current_time_ms}ms al tiempo {new_time_ms}ms")
 
     def on_stop(self):
         # Liberar la captura de video cuando se cierre la aplicación
         self.capture.release()
+
+    def resume_video(self):
+        # Reanudar el video y el audio desde el tiempo guardado
+        pygame.mixer.music.unpause()  # Reanudar el audio
+        self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.video_time * 30)  # Reanudar el video en la posición correcta
+        Clock.schedule_interval(self.update, 1.0 / 30.0)  # Reanudar la actualización del video
 
 
 if __name__ == "__main__":
@@ -355,6 +417,8 @@ if __name__ == "__main__":
     actionVideo=ActionVideo()
     actionVideoStore=AddCreateVideoStore()
     listVideo=actionVideo.listVideo()
-    actionVideoStore.functionCreateVideoStore()
+    actionVideoStore.functionCreateVideoStore('VideoStore')
+    actionVideoStore.functionCreateVideoStore('SoundStore')
+
     actionSound=ActionSound()
     Menu().run()

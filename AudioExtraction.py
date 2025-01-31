@@ -5,7 +5,9 @@ def extraction_Audio(video_path):
     try:
         video = VideoFileClip(video_path)
         audio = video.audio
-        audio.write_audiofile(video_path + "audio.mp3")
+        audio_path = video_path + "_audio.mp3"
+        audio.write_audiofile(audio_path)
+        return audio_path
     except Exception as error:
         print('Error al obtener el audio del video')
         print(str(error))
