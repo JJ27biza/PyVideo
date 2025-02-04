@@ -24,6 +24,8 @@ from Directory.AddArchiveDirectory import AddArchiveDirectory
 from ActionVideo import ActionVideo
 from ffpyplayer.player import MediaPlayer
 from ControlSound.ActionSound import ActionSound
+from kivy.uix.dropdown import DropDown
+
 import cv2
 import numpy as np
 from kivy.clock import Clock
@@ -40,6 +42,7 @@ class Menu(App):
         self.audio_started = False
         self.listVideo = []  # Lista de videos disponibles en el directorio
         self.video_path = '../Image/pause.png'
+        self.sound_path=None
         self.buttonPlay = None  # Este debería ser un botón en tu interfaz Kivy
         self.video_time = 0  # Mantener la posición del video
         self.paused_frame = None  # Para mantener el último frame pausado
@@ -66,9 +69,29 @@ class Menu(App):
 
         self.buttonRecibir = Button(text="Recibir Video", size_hint=(0.1, 1))
         self.boxNav.add_widget(self.buttonRecibir)
+        # create a dropdown with 10 buttons
+        self.dropdown = DropDown()
+        for index in range(10):
+            # When adding widgets, we need to specify the height manually
+            # (disabling the size_hint_y) so the dropdown can calculate
+            # the area it needs.
+
+            self.btn = Button(text='Value %d' % index, size_hint_y=None, height=44)
+
+            # for each button, attach a callback that will call the select() method
+            # on the dropdown. We'll pass the text of the button as the data of the
+            # selection.
+            self.btn.bind(on_release=lambda btn: self.dropdown.select(btn.text))
+
+            # then add the button inside the dropdown
+            self.dropdown.add_widget(self.btn)
+
+        # create a big main button
 
         # Botón Enviar Bluetooth
         self.buttonEmitirLocal=Button(text="Emitir Local",size_hint=(0.1,1))
+        self.buttonEmitirLocal.bind(on_release=self.dropdown.open)
+        #self.dropdown.bind(on_select=lambda instance, x: setattr(self.buttonEmitirLocal, 'text', x))
         self.boxNav.add_widget(self.buttonEmitirLocal)
         # Botón Descargar Video
         self.buttonEmitirYouTube=Button(text="Emitir YouTube",size_hint=(0.1,1))
@@ -141,6 +164,7 @@ class Menu(App):
             if numero < len(listVideo) + 1:
                 numero -= 1  # Avanzar al siguiente video
                 self.video_path = '../VideoStore/' + listVideo[numero]
+                self.sound_path='../SoundStore/'+listVideo[numero]+'_audio.mp3'
                 pygame.mixer.music.load('../SoundStore/' + listVideo[numero] + '_audio.mp3')
                 self.capture = cv2.VideoCapture(self.video_path)  # Cargar el siguiente video
                 print(f"Reproduciendo: {listVideo[numero]}", 'Numero: ', numero)
@@ -157,6 +181,7 @@ class Menu(App):
             if numero < len(listVideo) -1:
                 numero += 1  # Avanzar al siguiente video
                 self.video_path= '../VideoStore/' + listVideo[numero]
+                self.sound_path='../SoundStore/' + listVideo[numero] + '_audio.mp3'
                 pygame.mixer.music.load('../SoundStore/' + listVideo[numero] + '_audio.mp3')
                 self.capture = cv2.VideoCapture(self.video_path)  # Cargar el siguiente video
                 print(f"Reproduciendo: {listVideo[numero]}", 'Numero: ', numero)
@@ -177,8 +202,8 @@ class Menu(App):
                     self.capture = cv2.VideoCapture(self.video_path)
 
                     # Cargar y reproducir el audio
-                    audio_path = '../SoundStore/' + listVideo[numero] + '_audio.mp3'
-                    pygame.mixer.music.load(audio_path)
+                    self.sound_path= '../SoundStore/' + listVideo[numero] + '_audio.mp3'
+                    pygame.mixer.music.load(self.sound_path)
 
                     # Reproducir el audio desde el inicio y sincronizar con el video
                     pygame.mixer.music.play(loops=0, start=0.0)
@@ -229,6 +254,9 @@ class Menu(App):
             if self.video_path!='../Image/pause.png':
                 self.capture.release()
                 deleteVideo.functionDeleteArchive(self.video_path)
+                pygame.mixer.quit()
+                deleteVideo.functionDeleteArchive(self.sound_path)
+                self.video_path='../Image/pause.png'
         except Exception as error:
             print('Error al borrar',error)
 
