@@ -1,4 +1,6 @@
 import pychromecast
+from PyQt6.sip import array
+
 
 def listar_chromecasts():
     # Intentar descubrir los dispositivos Chromecast en la red
@@ -6,8 +8,11 @@ def listar_chromecasts():
 
     if chromecasts:
         print("Dispositivos Chromecast disponibles:")
+        array=[]
         for idx, cast in enumerate(chromecasts):
-            print(f"{idx + 1}. {cast.name,cast.cast_info}" )
+            print(f"{idx + 1}. {cast.name}" )
+            array.append(cast.name)
+        return array
     else:
         print("No se encontraron dispositivos Chromecast en la red.")
 

@@ -14,6 +14,9 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.slider import Slider
 from kivy.core.window import Window
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.popup import Popup
 from Directory.DeleteArchiveDirectory import DeleteArchiveDirectory
 from Directory.OpenDirectory import OpenDirectory
 from Directory.AddCreateVideoStore import AddCreateVideoStore
@@ -25,7 +28,9 @@ from ActionVideo import ActionVideo
 from ffpyplayer.player import MediaPlayer
 from ControlSound.ActionSound import ActionSound
 from kivy.uix.dropdown import DropDown
-
+import ListaEmitir as lista
+import EmitirLocal as emitirLocal
+import EmitirYouTube as emitiryt
 import cv2
 import numpy as np
 from kivy.clock import Clock
@@ -40,12 +45,14 @@ class Menu(App):
         self.pauseAction = False
         self.buttonPlay = None
         self.audio_started = False
+        self.url_yt_pop=None
         self.listVideo = []  # Lista de videos disponibles en el directorio
         self.video_path = '../Image/pause.png'
         self.sound_path=None
         self.buttonPlay = None  # Este debería ser un botón en tu interfaz Kivy
         self.video_time = 0  # Mantener la posición del video
-        self.paused_frame = None  # Para mantener el último frame pausado
+        self.paused_frame = None
+        self.arrayListar=lista.listar_chromecasts()
         pygame.mixer.init()
         Window.maximize()
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
@@ -71,22 +78,44 @@ class Menu(App):
         self.boxNav.add_widget(self.buttonRecibir)
         # create a dropdown with 10 buttons
         self.dropdown = DropDown()
-        for index in range(10):
+
+        for index in enumerate(self.arrayListar):
             # When adding widgets, we need to specify the height manually
             # (disabling the size_hint_y) so the dropdown can calculate
             # the area it needs.
 
-            self.btn = Button(text='Value %d' % index, size_hint_y=None, height=44)
+            # Crea el botón
+            self.btn = Button(text=str(index[1]), size_hint_y=None, height=44)
 
-            # for each button, attach a callback that will call the select() method
-            # on the dropdown. We'll pass the text of the button as the data of the
-            # selection.
-            self.btn.bind(on_release=lambda btn: self.dropdown.select(btn.text))
+            # Usar una lambda para asegurarse de que el texto del botón se pase correctamente
+            self.btn.bind(on_release=lambda btn=self.btn: self.dropdown.select(btn.text))
 
-            # then add the button inside the dropdown
+            # Añadir el botón al dropdown
             self.dropdown.add_widget(self.btn)
 
-        # create a big main button
+        # Bind del dropdown
+        self.dropdown.bind(on_select=lambda instance, x: emitirLocal.emit_in_local(self.video_path, x))
+
+        self.dropdownyt = DropDown()
+
+        for index in enumerate(self.arrayListar):
+            # When adding widgets, we need to specify the height manually
+            # (disabling the size_hint_y) so the dropdown can calculate
+            # the area it needs.
+
+            # Crea el botón
+            self.btn = Button(text=str(index[1]), size_hint_y=None, height=44)
+
+            # Usar una lambda para asegurarse de que el texto del botón se pase correctamente
+            self.btn.bind(on_release=lambda btn=self.btn: self.dropdownyt.select(btn.text))
+
+            # Añadir el botón al dropdown
+            self.dropdownyt.add_widget(self.btn)
+
+        # Bind del dropdown
+        self.dropdownyt.bind(on_select=lambda instance, x:self.open_popup(x) )
+
+
 
         # Botón Enviar Bluetooth
         self.buttonEmitirLocal=Button(text="Emitir Local",size_hint=(0.1,1))
@@ -95,6 +124,9 @@ class Menu(App):
         self.boxNav.add_widget(self.buttonEmitirLocal)
         # Botón Descargar Video
         self.buttonEmitirYouTube=Button(text="Emitir YouTube",size_hint=(0.1,1))
+        #
+        self.buttonEmitirYouTube.bind(on_release=self.dropdownyt.open)
+
         self.boxNav.add_widget(self.buttonEmitirYouTube)
         # Botón Borrar Video
         self.buttonBorrarVideo=Button(text="Borrar",size_hint=(0.1,1))
@@ -434,6 +466,44 @@ class Menu(App):
         pygame.mixer.music.unpause()  # Reanudar el audio
         self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.video_time * 30)  # Reanudar el video en la posición correcta
         Clock.schedule_interval(self.update, 1.0 / 30.0)  # Reanudar la actualización del video
+
+    def open_popup(self, x):
+        # Crear el contenido para la ventana emergente (popup)
+        self.popup_content = BoxLayout(orientation='vertical')
+
+        self.label = Label(text='Añada la url del video de YouTube que desea visualizar')
+        self.textinput = TextInput()
+        self.close_button = Button(text="Ok")
+
+        # Usar una lambda para pasar el argumento 'x' al método close_popup
+        self.close_button.bind(on_release=lambda instance: self.close_popup(instance, x))
+
+        # Añadir los widgets al contenido del popup
+        self.popup_content.add_widget(self.label)
+        self.popup_content.add_widget(self.textinput)
+        self.popup_content.add_widget(self.close_button)
+
+        # Crear el Popup y mostrarlo
+        self.popup = Popup(title="Ventana Emergente", content=self.popup_content,
+                           size_hint=(None, None), size=(400, 300))
+        self.popup.open()
+
+    def close_popup(self, instance, x):
+        # Cerrar el popup cuando se presione el botón de cerrar
+        self.popup.dismiss()
+
+        # Obtener el texto del TextInput
+        self.url_yt_pop = self.textinput.text
+
+        # Eliminar la parte de la URL de YouTube
+        delete = "https://www.youtube.com/watch?v="
+        self.url_yt_pop = self.url_yt_pop.replace(delete, "")
+        print(self.url_yt_pop)
+        # Llamar a la función emitiryt con el valor procesado
+        emitiryt.emit_in_yt(self.url_yt_pop, x)
+
+    def add_url_yt(self,instance):
+        self.open_popup()
 
 
 if __name__ == "__main__":
