@@ -5,6 +5,8 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 import sys
+import socket
+
 
 
 from numpy.lib.utils import source
@@ -37,6 +39,7 @@ from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import pygame
 import AudioExtraction as audio
+import serverFake as sf
 
 
 class Menu(App):
@@ -52,6 +55,7 @@ class Menu(App):
         self.buttonPlay = None  # Este debería ser un botón en tu interfaz Kivy
         self.video_time = 0  # Mantener la posición del video
         self.paused_frame = None
+        self.error_Borrado=False
         self.arrayListar=lista.listar_chromecasts()
         pygame.mixer.init()
         Window.maximize()
@@ -72,13 +76,17 @@ class Menu(App):
         self.boxNav.add_widget(self.buttonAñadir)
         # Botón Añadir Bluethoot
         self.buttonEnviar=Button(text="Enviar Video",size_hint=(0.1,1))
+
+        self.buttonEnviar.bind(on_press=self.open_popup_Server_Output)
+
         self.boxNav.add_widget(self.buttonEnviar)
 
         self.buttonRecibir = Button(text="Recibir Video", size_hint=(0.1, 1))
         self.boxNav.add_widget(self.buttonRecibir)
         # create a dropdown with 10 buttons
         self.dropdown = DropDown()
-
+        if self.arrayListar==None or self.arrayListar==0:
+            self.arrayListar=''
         for index in enumerate(self.arrayListar):
             # When adding widgets, we need to specify the height manually
             # (disabling the size_hint_y) so the dropdown can calculate
@@ -97,7 +105,8 @@ class Menu(App):
         self.dropdown.bind(on_select=lambda instance, x: emitirLocal.emit_in_local(self.video_path, x))
 
         self.dropdownyt = DropDown()
-
+        if self.arrayListar==None or self.arrayListar==0:
+            self.arrayListar=''
         for index in enumerate(self.arrayListar):
             # When adding widgets, we need to specify the height manually
             # (disabling the size_hint_y) so the dropdown can calculate
@@ -113,7 +122,7 @@ class Menu(App):
             self.dropdownyt.add_widget(self.btn)
 
         # Bind del dropdown
-        self.dropdownyt.bind(on_select=lambda instance, x:self.open_popup(x) )
+        self.dropdownyt.bind(on_select=lambda instance, x:self.open_popup_YT(x) )
 
 
 
@@ -244,9 +253,14 @@ class Menu(App):
                     Clock.schedule_interval(self.update, 1.0 / 30.0)
 
                 else:
-                    print('Reproducir solo el audio')
-                    pygame.mixer.music.play(loops=0,
+
+                    if self.error_Borrado==False:
+                        pygame.mixer.music.play(loops=0,
                                             start=self.video_time)  # Comienza el audio desde el tiempo actual del video
+                    else:
+                        print('Error en el borrado')
+                        self.video_path=='../Image/pause.png'
+                        self.error_Borrado=True
 
             else:
                 print('No se encuentra el directorio')
@@ -288,7 +302,8 @@ class Menu(App):
                 deleteVideo.functionDeleteArchive(self.video_path)
                 pygame.mixer.quit()
                 deleteVideo.functionDeleteArchive(self.sound_path)
-                self.video_path='../Image/pause.png'
+                pygame.mixer.init()
+                self.show_end_image()
         except Exception as error:
             print('Error al borrar',error)
 
@@ -405,9 +420,14 @@ class Menu(App):
         # Cargar la imagen que quieres mostrar al final del video
         end_image_path = '../Image/pause.png'  # Cambia la ruta a la imagen que deseas mostrar
         end_image = cv2.imread(end_image_path)
+        if end_image is None:
+            print("Error: No se pudo leer el frame del video")
+            self.error_Borrado=True
+        else:
+            end_image = cv2.cvtColor(end_image, cv2.COLOR_BGR2RGB)
 
         # Convertir la imagen a formato adecuado para Kivy (de BGR a RGB)
-        end_image = cv2.cvtColor(end_image, cv2.COLOR_BGR2RGB)
+
 
         # Crear la textura para la imagen final
         texture = Texture.create(size=(end_image.shape[1], end_image.shape[0]), colorfmt='rgb')
@@ -467,7 +487,7 @@ class Menu(App):
         self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.video_time * 30)  # Reanudar el video en la posición correcta
         Clock.schedule_interval(self.update, 1.0 / 30.0)  # Reanudar la actualización del video
 
-    def open_popup(self, x):
+    def open_popup_YT(self, x):
         # Crear el contenido para la ventana emergente (popup)
         self.popup_content = BoxLayout(orientation='vertical')
 
@@ -488,7 +508,7 @@ class Menu(App):
                            size_hint=(None, None), size=(400, 300))
         self.popup.open()
 
-    def close_popup(self, instance, x):
+    def close_popup_YT(self, instance, x):
         # Cerrar el popup cuando se presione el botón de cerrar
         self.popup.dismiss()
 
@@ -502,8 +522,38 @@ class Menu(App):
         # Llamar a la función emitiryt con el valor procesado
         emitiryt.emit_in_yt(self.url_yt_pop, x)
 
+    def open_popup_Server_Output(self,instance):
+
+        # Crear el contenido para la ventana emergente (popup)
+        self.popup_content = BoxLayout(orientation='vertical')
+        mi_ip = socket.gethostbyname(socket.gethostname())
+        self.label = Label(text='Server ya funcionando')
+        self.label2=Label(text = 'http://' + mi_ip + ':5000/descarga')
+        self.close_button = Button(text="Ok")
+
+        # Usar una lambda para pasar el argumento 'x' al método close_popup
+        self.close_button.bind(on_release=lambda instance: self.close_popup(instance))
+
+        # Añadir los widgets al contenido del popup
+        self.popup_content.add_widget(self.label)
+        self.popup_content.add_widget(self.label2)
+        self.popup_content.add_widget(self.close_button)
+
+        # Crear el Popup y mostrarlo
+        self.popup = Popup(title="Ventana Server", content=self.popup_content,
+                           size_hint=(None, None), size=(400, 300))
+        self.popup.open()
+        delete = "../VideoStore/"
+        url_video = self.video_path.replace(delete, "")
+        sf.enviarVideo(url_video)
+
+    def close_popup_Server(self, instance):
+        # Cerrar el popup cuando se presione el botón de cerrar
+        self.popup.dismiss()
+
+
     def add_url_yt(self,instance):
-        self.open_popup()
+        self.open_popup_YT()
 
 
 if __name__ == "__main__":
