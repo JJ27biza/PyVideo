@@ -6,7 +6,7 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 import sys
 import socket
-
+import threading
 
 
 from numpy.lib.utils import source
@@ -40,6 +40,8 @@ from kivy.graphics.texture import Texture
 import pygame
 import AudioExtraction as audio
 import serverFake as sf
+import UrlDescarga as ud
+
 
 
 class Menu(App):
@@ -57,6 +59,8 @@ class Menu(App):
         self.paused_frame = None
         self.error_Borrado=False
         self.arrayListar=lista.listar_chromecasts()
+        self.ip=None
+
         pygame.mixer.init()
         Window.maximize()
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
@@ -82,6 +86,7 @@ class Menu(App):
         self.boxNav.add_widget(self.buttonEnviar)
 
         self.buttonRecibir = Button(text="Recibir Video", size_hint=(0.1, 1))
+        self.buttonRecibir.bind(on_press=self.open_popup_Server_Inputput)
         self.boxNav.add_widget(self.buttonRecibir)
         # create a dropdown with 10 buttons
         self.dropdown = DropDown()
@@ -522,17 +527,16 @@ class Menu(App):
         # Llamar a la función emitiryt con el valor procesado
         emitiryt.emit_in_yt(self.url_yt_pop, x)
 
-    def open_popup_Server_Output(self,instance):
-
+    def open_popup_Server_Output(self, instance):
         # Crear el contenido para la ventana emergente (popup)
         self.popup_content = BoxLayout(orientation='vertical')
         mi_ip = socket.gethostbyname(socket.gethostname())
-        self.label = Label(text='Server ya funcionando')
-        self.label2=Label(text = 'http://' + mi_ip + ':5000/descarga')
-        self.close_button = Button(text="Ok")
+        self.label = Label(text='Server ya funcionando durante 1 minuto')
+        self.label2 = Label(text='http://' + mi_ip + ':5000/descarga')
+        self.close_button = Button(text="Close")
 
-        # Usar una lambda para pasar el argumento 'x' al método close_popup
-        self.close_button.bind(on_release=lambda instance: self.close_popup(instance))
+        # Usar una lambda para pasar el argumento 'x' al método close_popup_Server
+        self.close_button.bind(on_release=lambda instance: self.close_popup_Server(instance))
 
         # Añadir los widgets al contenido del popup
         self.popup_content.add_widget(self.label)
@@ -543,13 +547,57 @@ class Menu(App):
         self.popup = Popup(title="Ventana Server", content=self.popup_content,
                            size_hint=(None, None), size=(400, 300))
         self.popup.open()
+
         delete = "../VideoStore/"
         url_video = self.video_path.replace(delete, "")
-        sf.enviarVideo(url_video)
+
+
+        threading.Thread(target=sf.enviarVideo, args=(url_video,)).start()
+
+
+
 
     def close_popup_Server(self, instance):
         # Cerrar el popup cuando se presione el botón de cerrar
+        self.popup.dismiss()  # Cerrar el popup correctamente
+
+    def open_popup_Server_Inputput(self, instance):
+        # Crear el contenido para la ventana emergente (popup)
+        self.popup_content2 = BoxLayout(orientation='vertical')
+        mi_ip = socket.gethostbyname(socket.gethostname())
+        self.label = Label(text='Descargar de video indica solo su ip. Ejemplo: 192.168.x.x')
+        self.textinput = TextInput()
+        self.close_button = Button(text="Ok")
+
+        # Usar una lambda para pasar el argumento 'x' al método close_popup_Server
+        self.close_button.bind(on_release=lambda instance: self.close_popup_Input(instance))
+
+        # Añadir los widgets al contenido del popup
+        self.popup_content2.add_widget(self.label)
+        self.popup_content2.add_widget(self.textinput)
+        self.popup_content2.add_widget(self.close_button)
+
+        # Crear el Popup y mostrarlo
+        self.popup = Popup(title="Ventana Entrada", content=self.popup_content2,
+                           size_hint=(None, None), size=(400, 300))
+        self.popup.open()
+
+
+
+
+    def close_popup_Input(self, instance):
+        # Cerrar el popup cuando se presione el botón de cerrar
         self.popup.dismiss()
+        self.ip=self.textinput.text
+        url='http://'+self.ip+':5000/descarga'
+        ud.descargar_archivo(url)
+
+
+
+
+
+
+
 
 
     def add_url_yt(self,instance):

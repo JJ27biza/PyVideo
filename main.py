@@ -8,6 +8,7 @@ import VideoReproduce as video
 from VideoReproduce import VideoReproduce
 import Directory.DeleteArchiveDirectory as deleteVideo
 import pyvolume
+import serverFake as es
 
 def añadirVideo():
     o.run()
@@ -19,15 +20,10 @@ def verVideo():
 def borrarVideo():
     deleteVideo.functionDeleteArchive('VideoStore/LockBoxAndroid.mp4')
 if __name__ == '__main__':
-    o=OpenDirectory()
-    delete=ModificText()
-    addD=AddArchiveDirectory()
-    video=VideoReproduce()
-    deleteVideo=DeleteArchiveDirectory()
-    añadirVideo()
+   es.apagarServidor()  # Puedes descomentar esta línea para apagar el servidor después de un tiempo
 
 
-    pyvolume.custom(percent=30)
+
     #verVideo()
 
 
