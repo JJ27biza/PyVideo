@@ -740,5 +740,6 @@ if __name__ == "__main__":
     listVideo=actionVideo.listVideo()
     actionVideoStore.functionCreateVideoStore('VideoStore')
     actionVideoStore.functionCreateVideoStore('SoundStore')
+    actionVideoStore.functionCreateVideoStore('VideoStoreSubtitles')
     actionSound=ActionSound()
     Menu().run()
