@@ -1,0 +1,47 @@
+# Descubre los dispositivos Chromecast disponibles en la red
+        chromecasts, browser = pychromecast.get_chromecasts()
+
+        # Verifica que se hayan encontrado dispositivos Chromecast
+        if not chromecasts:
+            print("No se encontraron dispositivos Chromecast.")
+            exit()
+
+        # Conectar al primer Chromecast encontrado
+        chromecast = chromecasts[0]
+        print(f"Conectando al dispositivo: {chromecast.name}")
+        chromecast.wait()
+
+        # Obtener el controlador de medios
+        media_controller = chromecast.media_controller
+
+        # Verifica si el Chromecast está listo para reproducir medios
+        if not media_controller.status or media_controller.status.player_state == 'IDLE':
+            print("El Chromecast no está listo para reproducir.")
+            exit()
+
+        # Reproducir el video utilizando el media_controller
+        print("Reproduciendo el video...")
+        media_controller.play_media(video_url, 'video/mp4')  # Usa el formato correcto para el archivo
+
+        # Espera a que el video esté listo para reproducirse
+        media_controller.block_until_active()  # Bloquea hasta que el video comience a reproducirse
+
+        # Verifica si el video está reproduciéndose
+        start_time = time.time()
+        while edia_controller.status.player_state != 'PLAYING' and time.time() - start_time < 30:
+            print(f"Esperando que el video se reproduzca... Estado actual: {media_controller.status.player_state}")
+            time.sleep(1)
+
+        if media_controller.status.player_state == 'PLAYING':
+            print("El video se está reproduciendo con éxito.")
+        else:
+            print("No se pudo reproducir el video. Estado actual:", media_controller.status.player_state)
+
+        # Evitar que el servidor Flask se cierre
+        while True:
+            time.sleep(60)  # Mantén el servidor funcionando indefinidamente
+
+
+
+    except Exception as error:
+        print(error)

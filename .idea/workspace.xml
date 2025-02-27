@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="EmitirLocalProcess">
-      <change afterPath="$PROJECT_DIR$/DeleteTextYoTube.py" afterDir="false" />
+    <list default="true" id="00e5d1f5-1fa4-421c-ae71-8671d53cac57" name="Changes" comment="PrimeraVersion">
+      <change afterPath="$PROJECT_DIR$/Image/cargando.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/emitirlocal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirLocal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/EmitirLocal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionVideo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeleteTextYoTube.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafic/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafic/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/Image/pause.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirLocal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Emision/EmitirLocal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" beforeDir="false" afterPath="$PROJECT_DIR$/Emision/EmitirYouTube.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/ListaEmitir.py" beforeDir="false" afterPath="$PROJECT_DIR$/Emision/ListaEmitir.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/NuevoMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/PruebaVideo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/VideoPla.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pruebas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/StrVideo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Subtitules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subtitules/Subtitules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VideoReproduce.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/strToVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subtitules/strToVideo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,112 +60,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.AudioExtraction.executor": "Run",
-    "Python.AudioToText.executor": "Run",
-    "Python.DeleteTextYoTube.executor": "Run",
-    "Python.Emitir.executor": "Run",
-    "Python.EmitirLocal.executor": "Run",
-    "Python.EmitirYouTube.executor": "Run",
-    "Python.ListaEmitir.executor": "Run",
-    "Python.Menu.executor": "Run",
-    "Python.NuevoMenu.executor": "Run",
-    "Python.OpenDirectory.executor": "Run",
-    "Python.PruebaFFMEPG.executor": "Run",
-    "Python.PruebaVideo.executor": "Run",
-    "Python.Subtitules.executor": "Run",
-    "Python.Video.executor": "Run",
-    "Python.VideoPla.executor": "Run",
-    "Python.VideoPlayer (1).executor": "Run",
-    "Python.VideoPlayer.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.serverFake.executor": "Run",
-    "Python.strToVideo.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/micro/PycharmProjects/PyVideo/VideoStore",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.AudioExtraction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.AudioToText.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DeleteTextYoTube.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Emitir.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EmitirLocal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EmitirYouTube.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ListaEmitir.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NuevoMenu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OpenDirectory.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaFFMEPG.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaVideo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.StrVideo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Subtitules.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Video.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VideoPla.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VideoPlayer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.VideoPlayer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.serverFake.executor&quot;: &quot;Run&quot;,
+    &quot;Python.str.executor&quot;: &quot;Run&quot;,
+    &quot;Python.strToVideo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/micro/PycharmProjects/PyVideo/Image&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\micro\PycharmProjects\PyVideo\VideoStore" />
-      <recent name="C:\Users\micro\PycharmProjects\PyVideo\build" />
-      <recent name="C:\Users\micro\PycharmProjects\PyVideo\ffmpeg" />
       <recent name="C:\Users\micro\PycharmProjects\PyVideo\Image" />
-      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Grafic" />
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Pruebas" />
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Subtitules" />
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\Emision" />
+      <recent name="C:\Users\micro\PycharmProjects\PyVideo\VideoStore" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.NuevoMenu">
-    <configuration name="DeleteTextYoTube" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyVideo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeleteTextYoTube.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="EmitirYouTube" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyVideo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/EmitirYouTube.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ListaEmitir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyVideo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/ListaEmitir.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.Menu">
     <configuration name="Menu" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
@@ -200,7 +148,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="VideoPla" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="StrVideo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyVideo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -209,11 +157,77 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pruebas" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pruebas/VideoPla.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/StrVideo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Subtitules" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Subtitules.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="str" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/str.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="strToVideo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyVideo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/strToVideo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -224,19 +238,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.Menu" />
-      <item itemvalue="Python.DeleteTextYoTube" />
-      <item itemvalue="Python.EmitirYouTube" />
-      <item itemvalue="Python.ListaEmitir" />
-      <item itemvalue="Python.VideoPla" />
+      <item itemvalue="Python.StrVideo" />
+      <item itemvalue="Python.str" />
+      <item itemvalue="Python.Subtitules" />
+      <item itemvalue="Python.strToVideo" />
       <item itemvalue="Python.NuevoMenu" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.StrVideo" />
+        <item itemvalue="Python.str" />
+        <item itemvalue="Python.Subtitules" />
+        <item itemvalue="Python.strToVideo" />
         <item itemvalue="Python.NuevoMenu" />
-        <item itemvalue="Python.DeleteTextYoTube" />
-        <item itemvalue="Python.EmitirYouTube" />
-        <item itemvalue="Python.ListaEmitir" />
-        <item itemvalue="Python.VideoPla" />
       </list>
     </recent_temporary>
   </component>
@@ -360,7 +374,31 @@
       <option name="project" value="LOCAL" />
       <updated>1738684678440</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="EmitirLocalEmitirYT">
+      <option name="closed" value="true" />
+      <created>1738756265221</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738756265221</updated>
+    </task>
+    <task id="LOCAL-00015" summary="BorradoArreglado">
+      <option name="closed" value="true" />
+      <created>1739211337347</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739211337347</updated>
+    </task>
+    <task id="LOCAL-00016" summary="PrimeraVersion">
+      <option name="closed" value="true" />
+      <created>1739296532868</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1739296532868</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -387,6 +425,9 @@
     <MESSAGE value="SubtitulosFinalizado" />
     <MESSAGE value="AudioArreglado" />
     <MESSAGE value="EmitirLocalProcess" />
-    <option name="LAST_COMMIT_MESSAGE" value="EmitirLocalProcess" />
+    <MESSAGE value="EmitirLocalEmitirYT" />
+    <MESSAGE value="BorradoArreglado" />
+    <MESSAGE value="PrimeraVersion" />
+    <option name="LAST_COMMIT_MESSAGE" value="PrimeraVersion" />
   </component>
 </project>
