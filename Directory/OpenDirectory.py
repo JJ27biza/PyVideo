@@ -7,7 +7,7 @@ from kivy.core.window import Window
 
 
 class OpenDirectory(App):
-
+#Este metodo construye la parte gráfica para seleccionar el video que queremos añadir
     def build(self):
         Window.clearcolor = (0.2, 0.3, 0.4, 1)
         self.title = 'PyVideo'
@@ -25,17 +25,13 @@ class OpenDirectory(App):
         self.filechooser.show_hidden = True
 
         return self.box
-
+    #Cambia el texto para saber el video que seleccionamos
     def on_file_select(self, instance, value):
         try:
 
-            print(f"Valor de selección: {value}")
             if value:
                 selected_file = value[0]
                 self.label.text = f"Archivo seleccionado: {selected_file}"
-                print(f"Archivo seleccionado: {selected_file}")
-                #add.AñadirArchivoDirectorio.functionAddArchiveDirectory(selected_file,'C:/Users/micro/PycharmProjects/PyVideo/UML')
-
 
         except Exception as error:
             print('Error al seleccionar archivo:', error)

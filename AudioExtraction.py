@@ -1,6 +1,7 @@
 from moviepy.editor import *
 import traceback
 
+#Método para extraer el audio de un video
 def extraction_Audio(video_path):
     try:
         video = VideoFileClip(video_path)
@@ -13,5 +14,3 @@ def extraction_Audio(video_path):
         print(str(error))
         traceback.print_exc()
 
-if __name__ == '__main__':
-    extraction_Audio('VideoStore/integrale.mp4')
