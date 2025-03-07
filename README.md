@@ -7,4 +7,4 @@ The version compatible is 3.12 of Python.The subtiles don´t working whitout IMA
  Install ImageMagick to working with subtitles <br>
  url Downloads 
  https://imagemagick.org/script/download.php
- 
+  ImageMagick-7.1.1-44-Q16-x64-dll.exe
