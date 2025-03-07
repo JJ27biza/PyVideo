@@ -4,7 +4,7 @@ The version compatible is 3.12 of Python.The subtiles don´t working whitout IMA
 # Requeriments
  Install requeriments <br>
  pip install -r requirements.txt <br>
- Install ImageMagick to working with subtitles <br>
+ Install ImageMagick to work with subtitles <br>
  Downloads:  ImageMagick-7.1.1-44-Q16-x64-dll.exe https://imagemagick.org/script/download.php <br>
  Now we have to go to environment variables in windows <br>
  In environment variables we add a new one in the System variables section <br>
