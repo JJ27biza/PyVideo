@@ -5,7 +5,7 @@ The compatible Python version is 3.12.
 
 # Requirements
 
-1. Install Python version 3.12. and IDE in this proyect was used Pycharm Community Edition
+1. Install Python version 3.12. and IDE in this proyect was used Pycharm Community Edition.
 
 2. Install required dependencies:
 
