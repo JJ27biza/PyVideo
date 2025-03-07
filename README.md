@@ -2,7 +2,7 @@
 This Programm is a reproductive where you can add, remove videos and issue videos in chromecast and device compatible.
 The version compatible is 3.12 of Python.
 # Requeriments
- Install Python version 3.12
+ Install Python version 3.12 <br>
  Install requeriments <br>
  pip install -r requirements.txt <br>
  Install ImageMagick to work with subtitles <br>
