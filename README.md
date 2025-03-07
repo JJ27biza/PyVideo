@@ -5,4 +5,6 @@ The version compatible is 3.12 of Python.The subtiles don´t working whitout IMA
  Install requeriments <br>
  pip install -r requirements.txt <br>
  Install ImageMagick to working with subtitles <br>
+ url Downloads 
+ https://imagemagick.org/script/download.php
  
