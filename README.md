@@ -4,5 +4,5 @@ The version compatible is 3.12 of Python.The subtiles don´t working whitout IMA
 # Requeriments
  pip freeze > requirements.txt <br>
  pip install -r requirements.txt <br>
- Install ImageMagick to working with subtitles
- '''hola'''
+ Install ImageMagick to working with subtitles <br>
+ 
